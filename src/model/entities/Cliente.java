@@ -3,27 +3,27 @@ package model.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Seller implements Serializable {
+public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	private String name;
-	private String email;
-	private Date birthDate;
-	private Double baseSalary;
+	private String telephone;
+	private Date dataDoCadastro;
+	private Double saldoTotal;
 	
 	private Department department;
 	
-	public Seller() {
+	public Cliente() {
 	}
 
-	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
+	public Cliente(Integer id, String name, String telephone, Date dataDoCadastro, Double saldoTotal, Department department) {
 		this.id = id;
 		this.name = name;
-		this.email = email;
-		this.birthDate = birthDate;
-		this.baseSalary = baseSalary;
+		this.telephone = telephone;
+		this.dataDoCadastro = dataDoCadastro;
+		this.saldoTotal = saldoTotal;
 		this.department = department;
 	}
 
@@ -43,28 +43,28 @@ public class Seller implements Serializable {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getTelephone() {
+		return telephone;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
+	public Date getDataDoCadastro() {
+		return dataDoCadastro;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setDataDoCadastro(Date dataDoCadastro) {
+		this.dataDoCadastro = dataDoCadastro;
 	}
 
-	public Double getBaseSalary() {
-		return baseSalary;
+	public Double getSaldoTotal() {
+		return saldoTotal;
 	}
 
-	public void setBaseSalary(Double baseSalary) {
-		this.baseSalary = baseSalary;
+	public void setSaldoTotal(Double saldoTotal) {
+		this.saldoTotal = saldoTotal;
 	}
 
 	public Department getDepartment() {
@@ -91,7 +91,7 @@ public class Seller implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Seller other = (Seller) obj;
+		Cliente other = (Cliente) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -102,7 +102,7 @@ public class Seller implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
-				+ baseSalary + ", department=" + department + "]";
+		return "Cliente [id=" + id + ", name=" + name + ", telephone=" + telephone + ", dataDoCadastro=" + dataDoCadastro + ", saldoTotal="
+				+ saldoTotal + ", department=" + department + "]";
 	}
 }
