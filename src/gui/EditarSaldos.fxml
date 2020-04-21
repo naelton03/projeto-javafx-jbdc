@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="228.0" prefWidth="172.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EditarSaldosFormController">
+   <children>
+      <VBox layoutX="25.0" layoutY="42.0" prefHeight="303.0" prefWidth="284.0">
+         <children>
+            <Label text="Saldo a Dever" textAlignment="RIGHT" />
+            <TextField fx:id="txtsaldoADever" maxWidth="150.0" prefHeight="25.0" prefWidth="220.0" />
+            <Label fx:id="labelErrorSaldoADever" textFill="RED" />
+            <Label text="Saldo a Receber">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="txtSaldoAReceber" maxHeight="1.7976931348623157E308" maxWidth="150.0" />
+            <Label fx:id="labelErrorSaldoAReceber" textFill="RED" />
+            <Label text="Saldo">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="txtSaldo" editable="false" maxWidth="75.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btSave" mnemonicParsing="false" onAction="#onBtSaveAction" text="Salvar">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btCancel" mnemonicParsing="false" onAction="#onBtCancelAction" text="Cancelar">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

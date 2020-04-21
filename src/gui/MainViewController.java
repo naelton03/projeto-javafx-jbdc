@@ -13,27 +13,35 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.entities.Apostador;
+import model.services.ApostadorService;
 import model.services.DepartmentService;
-import model.services.SellerService;
 
 public class MainViewController implements Initializable {
 
 	@FXML
 	private MenuItem menuItemSeller;
+	
+	@FXML
+	private MenuItem menuItemSaldos;
 
 	@FXML
 	private MenuItem menuItemDepartment;
 
 	@FXML
 	private MenuItem menuItemAbout;
+	
+	@FXML
+	private ComboBox<Apostador> comboBoxApostador; 
 
 	@FXML
 	public void onMenuItemSellerAction() {
-		loadView("/gui/SellerList.fxml", (SellerListController controller) -> {
-			controller.setSellerService(new SellerService());
+		loadView("/gui/ApostadorList.fxml", (ApostadorListController controller) -> {
+			controller.setApostadorService(new ApostadorService());
 			controller.updateTableView();
 		});
 
@@ -47,6 +55,15 @@ public class MainViewController implements Initializable {
 		});
 
 	}
+	
+//	@FXML
+//	public void onMenuItemSaldosAction() {
+//		loadView("/gui/DepartmentList.fxml", (SaldosListController controller) -> {
+//			controller.setApostasService(new ApostasService());
+//			controller.updateTableView();
+//		});
+//
+//	}
 
 	@FXML
 	public void onMenuItemAboutAction() {

@@ -2,47 +2,67 @@ package model.entities;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Apostas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private String name;
-	private String telefone;
+	private Double saldoADever;
+	private Double saldoAReceber;
+	private Double saldo;
 	
-	public Cliente() {
+	public Apostas() {
 	}
 
-	public Cliente(Integer id, String name) {
-		this.id = id;
-		this.name = name;
-	}
+	
 
 	public Integer getId() {
 		return id;
 	}
 
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+
+
+	public Double getSaldoADever() {
+		return saldoADever;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
 
-	public String getTelefone() {
-		return telefone;
+
+	public void setSaldoADever(Double saldoADever) {
+		this.saldoADever = saldoADever;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+
+
+	public Double getSaldoAReceber() {
+		return saldoAReceber;
 	}
+
+
+
+	public void setSaldoAReceber(Double saldoAReceber) {
+		this.saldoAReceber = saldoAReceber;
+	}
+
+
+
+	public Double getSaldo() {
+		return saldo;
+	}
+
+
+
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -60,7 +80,7 @@ public class Cliente implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
+		Apostas other = (Apostas) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -71,6 +91,6 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", name=" + name + " telefone=" + telefone +"]";
+		return "Department [id=" + id + ", saldoADever=" + saldoADever + ", saldoAReceber=" + saldoAReceber +", saldo=" + saldo +" ]";
 	}
 }

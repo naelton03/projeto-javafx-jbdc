@@ -1,18 +1,21 @@
 package model.dao;
 
 import db.DB;
+import model.dao.impl.ApostadorDaoJDBC;
+import model.dao.impl.ApostasDaoJDBC;
 import model.dao.impl.DepartmentDaoJDBC;
-import model.dao.impl.SellerDaoJDBC;
 
 public class DaoFactory {
 
-	public static SellerDao createSellerDao() {
-		return new SellerDaoJDBC(DB.getConnection());
+	public static ApostadorDao createApostadorDao() {
+		return new ApostadorDaoJDBC(DB.getConnection());
+	}
+	
+	public static ApostasDao createApostasDao() {
+		return new ApostasDaoJDBC(DB.getConnection());
 	}
 	
 	public static DepartmentDao createDepartmentDao() {
 		return new DepartmentDaoJDBC(DB.getConnection());
 	}
-	
-
 }

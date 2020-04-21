@@ -9,29 +9,59 @@ public class Apostador implements Serializable {
 	private Integer id;
 	private String name;
 	
+	private Apostador apostador;
+
+	public double setSaldo;
+	
 	public Apostador() {
 	}
 
-	public Apostador(Integer id, String name) {
+	
+
+	public Apostador(Integer id, String name, Double saldoADever, Double saldoAReceber, Double saldo,
+			Department department) {
+		super();
 		this.id = id;
 		this.name = name;
+	
 	}
+	
+
 
 	public Integer getId() {
 		return id;
 	}
 
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 
 	public String getName() {
 		return name;
 	}
 
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+	public Apostador getApostador() {
+		return apostador;
+	}
+
+
+
+	public void setApostador(Apostador apostador) {
+		this.apostador = apostador;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -60,6 +90,6 @@ public class Apostador implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Apostador [id=" + id + ", name=" + name + "]";
+		return "Apostador [id=" + id + ", name=" + name +"]";
 	}
 }
