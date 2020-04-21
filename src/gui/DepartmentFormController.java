@@ -36,6 +36,12 @@ public class DepartmentFormController implements Initializable {
 
 	@FXML
 	private TextField txtName;
+	
+	@FXML 
+	private TextField txtTelefone;
+	
+	@FXML
+	private Label labelErrorTelefone;
 
 	@FXML
 	private Label labelErrorName;
@@ -95,6 +101,12 @@ public class DepartmentFormController implements Initializable {
 			exception.addError("name", "Field can't be empty");
 		}
 		obj.setName(txtName.getText());
+		
+		if (txtTelefone.getText() == null || txtTelefone.getText().trim().equals("")) {
+			exception.addError("telefone", "Field can't be empty");
+		}
+		
+		obj.setTelefone(txtTelefone.getText());
 
 		if (exception.getErrors().size() > 0) {
 			throw exception;
@@ -116,6 +128,7 @@ public class DepartmentFormController implements Initializable {
 	private void initializeNodes() {
 		Constraints.setTextFieldInteger(txtId);
 		Constraints.setTextFieldMaxLength(txtName, 30);
+		Constraints.setTextFieldMaxLength(txtTelefone, 11);
 	}
 
 	public void updateFormData() {
@@ -124,6 +137,7 @@ public class DepartmentFormController implements Initializable {
 		}
 		txtId.setText(String.valueOf(entity.getId()));
 		txtName.setText(entity.getName());
+		txtTelefone.setText(entity.getTelefone());
 	}
 
 	private void setErrorMessages(Map<String, String> errors) {
@@ -131,6 +145,10 @@ public class DepartmentFormController implements Initializable {
 
 		if (fields.contains("name")) {
 			labelErrorName.setText(errors.get("name"));
+		}
+		
+		if (fields.contains("telefone")) {
+			labelErrorTelefone.setText(errors.get("telefone"));
 		}
 	}
 }

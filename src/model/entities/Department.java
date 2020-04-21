@@ -8,6 +8,7 @@ public class Department implements Serializable {
 
 	private Integer id;
 	private String name;
+	private String telefone;
 	
 	public Department() {
 	}
@@ -31,6 +32,15 @@ public class Department implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	@Override
@@ -60,6 +70,6 @@ public class Department implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Department [id=" + id + ", name=" + name + "]";
+		return "Department [id=" + id + ", name=" + name + ", telefone=" + telefone + "]";
 	}
 }

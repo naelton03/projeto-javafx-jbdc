@@ -17,32 +17,30 @@ import model.entities.Department;
 public class DepartmentDaoJDBC implements DepartmentDao {
 
 	private Connection conn;
-	
+
 	public DepartmentDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
-	
+
 	@Override
 	public Department findById(Integer id) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
-			st = conn.prepareStatement(
-				"SELECT * FROM department WHERE Id = ?");
+			st = conn.prepareStatement("SELECT * FROM department WHERE Id = ?");
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
 				Department obj = new Department();
 				obj.setId(rs.getInt("Id"));
 				obj.setName(rs.getString("Name"));
+				obj.setTelefone(rs.getString("Telefone"));
 				return obj;
 			}
 			return null;
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		}
-		finally {
+		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
@@ -53,8 +51,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
-			st = conn.prepareStatement(
-				"SELECT * FROM department ORDER BY Name");
+			st = conn.prepareStatement("SELECT * FROM department ORDER BY Name");
 			rs = st.executeQuery();
 
 			List<Department> list = new ArrayList<>();
@@ -63,14 +60,13 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 				Department obj = new Department();
 				obj.setId(rs.getInt("Id"));
 				obj.setName(rs.getString("Name"));
+				obj.setTelefone(rs.getString("Telefone"));
 				list.add(obj);
 			}
 			return list;
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		}
-		finally {
+		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
@@ -80,32 +76,26 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 	public void insert(Department obj) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
-				"INSERT INTO department " +
-				"(Name) " +
-				"VALUES " +
-				"(?)", 
-				Statement.RETURN_GENERATED_KEYS);
+			st = conn.prepareStatement("INSERT INTO department " + "(Name, telefone) "
+					+ "VALUES " + "(?, ?)", Statement.RETURN_GENERATED_KEYS);
 
 			st.setString(1, obj.getName());
+			st.setString(2, obj.getTelefone());
 
 			int rowsAffected = st.executeUpdate();
-			
+
 			if (rowsAffected > 0) {
 				ResultSet rs = st.getGeneratedKeys();
 				if (rs.next()) {
 					int id = rs.getInt(1);
 					obj.setId(id);
 				}
-			}
-			else {
+			} else {
 				throw new DbException("Unexpected error! No rows affected!");
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		} 
-		finally {
+		} finally {
 			DB.closeStatement(st);
 		}
 	}
@@ -114,20 +104,16 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 	public void update(Department obj) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
-				"UPDATE department " +
-				"SET Name = ? " +
-				"WHERE Id = ?");
+			st = conn.prepareStatement("UPDATE department " + "SET Name = ? " + "SET Telefone = ? " + "WHERE Id = ?");
 
 			st.setString(1, obj.getName());
-			st.setInt(2, obj.getId());
+			st.setString(2, obj.getTelefone());
+			st.setInt(3, obj.getId());
 
 			st.executeUpdate();
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		} 
-		finally {
+		} finally {
 			DB.closeStatement(st);
 		}
 	}
@@ -136,17 +122,14 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 	public void deleteById(Integer id) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
-				"DELETE FROM department WHERE Id = ?");
+			st = conn.prepareStatement("DELETE FROM department WHERE Id = ?");
 
 			st.setInt(1, id);
 
 			st.executeUpdate();
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbIntegrityException(e.getMessage());
-		} 
-		finally {
+		} finally {
 			DB.closeStatement(st);
 		}
 	}

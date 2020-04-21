@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="388.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartmentListController">
+<VBox prefHeight="412.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartmentListController">
    <children>
-      <Label text="Department Registration">
+      <Label text="Lista de Apostadores">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -22,15 +23,15 @@
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
           <Button fx:id="btNew" mnemonicParsing="false" onAction="#onBtNewAction" text="New" />
+            <ComboBox prefWidth="150.0" promptText="Selecione" />
         </items>
       </ToolBar>
-      <TableView fx:id="tableViewDepartment" prefHeight="200.0" prefWidth="200.0">
+      <TableView prefHeight="200.0" prefWidth="398.0">
         <columns>
-          <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="tableColumnTelefone" prefWidth="75.0" text="Telefone" />
-            <TableColumn fx:id="tableColumnREMOVE" prefWidth="75.0" />
-            <TableColumn fx:id="tableColumnEDIT" prefWidth="75.0" />
+          <TableColumn prefWidth="75.0" text="Nome" />
+          <TableColumn prefWidth="99.0" text="Saldo a dever" />
+            <TableColumn prefWidth="132.0" text="Saldo a receber" />
+            <TableColumn prefWidth="100.0" text="Saldo Positivo" />
         </columns>
       </TableView>
    </children>
